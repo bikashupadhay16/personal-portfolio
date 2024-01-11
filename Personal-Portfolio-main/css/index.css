@@ -1,0 +1,262 @@
+/* define variables to be used*/
+:root {
+  --image-background-color: #481aff;
+  --primary-accent-color: #e1fff1;
+  --download-btn-offset: 8px;
+  --dark-color: #181a1f;
+  --animate-duration: 5000ms;
+  --animate-delay: 10s;
+}
+
+
+.animate__animated.animate__bounce {
+  --animate-duration: 1s;
+  --animate-delay: 0.5s;
+  animation-iteration-count: infinite;
+} */
+
+/* for debugging purpose only */
+*, *::before, *::after { outline: 1px solid red !important; }
+
+*, *::before, *::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Fraunces", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.bg-dark {
+  background-color: var(--dark-color) !important;
+}
+
+.z-9999 {
+  z-index: 9999;
+}
+
+.under-construction-banner {
+  position: fixed;
+  top: 340px;
+  left: -99px;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 14px;
+  z-index: 9999;
+  transform: rotate(-45deg);
+  transform-origin: top left;
+  width: 620px;
+  text-align: center;
+  line-height: 1.2;
+  text-shadow: #ffffff;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 30px;
+  background: repeating-linear-gradient( -45deg, yellow, yellow 10px, black 10px, black 20px);
+  color: black;
+}
+
+/* a css rule that animated underline when we hover a link */
+.hover-underline-animation {
+  position: relative;
+  text-decoration: none;
+  color: var(--primary-accent-color);
+  transition: color 0.1s;
+}
+
+.hover-underline-animation::before {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-accent-color);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+  transform-origin: left center;
+}
+
+.hover-underline-animation:hover::before {
+  transform: scaleX(1);
+}
+
+.download-icon-outline {
+  display: inline-block;
+  width: 38px;
+  height: 38px;
+  border: 1px solid #FFFFFF;
+  border-radius: 100%;
+}
+
+.download-icon {
+  display: inline-block;
+  position: relative;
+  padding: 0!important;
+  right: var(--download-btn-offset);
+  width: 38px;
+  height: 38px;
+  transition: transform 0.2s;
+}
+
+/* download icon animation */
+@keyframes download-icon-animation {
+  0% {transform: translateX(0px)}
+  20% {transform: translateX(18px)}
+  40% {transform: translateX(25px)}
+  60% {transform: translateX(10px)}
+  80% {transform: translateX(15px)}
+  100% {transform: translateX(0px)}
+}
+
+.download-icon.spin {
+  animation: download-icon-animation 1s linear;
+}
+
+/* define wave animation */
+@keyframes wave {
+  0% {transform: rotate(-1deg)}
+  10% {transform: rotate(13deg)}
+  20% {transform: rotate(-9deg)}
+  30% {transform: rotate(13deg)}
+  40% {transform: rotate(-5deg)}
+  50% {transform: rotate(10deg)}
+  60% {transform: rotate(0deg)}
+  100% {transform: rotate(0deg)}
+}
+
+#home {
+  /* a cool animation gif should be added to the backgournd */
+  background-image: url("../images/particle-strokes.svg");
+  background-size: cover;
+  background-repeat: repeat;
+}
+
+
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+#about {
+  background: linear-gradient(to bottom, #181a1f, #002f6cb4, #181a1f);
+  animation: gradientAnimation 3s ease infinite;
+}
+
+#projects {
+  background: linear-gradient(to bottom, #181a1f, #002f6cb4, #181a1f);
+  animation: gradientAnimation 3s ease infinite;
+}
+
+#achievements {
+  /*  a little tilted gradient */
+  background: linear-gradient(to bottom, #181a1f, #b6570a3f, #181a1f);
+  animation: gradientAnimation 1s alternate-reverse infinite;
+}
+
+/* waving-hand-icon class wave animation when hovered over */
+.waving-hand-icon.wave {
+  animation: wave 1s forwards;
+}
+
+.profile-pic-outline {
+  background-color: var(--image-background-color);
+  position: absolute;
+  transform: rotate(5deg);
+  max-width: 40em;
+  /* width: 100%; */
+  height: 30em;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+}
+
+
+.profile-pic {
+  position: relative;
+  max-width: 100%;
+  width: 25em;
+  margin: auto;
+  padding: 0;
+}
+
+/* card related */
+.card {
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.091);
+  color: white;
+}
+
+.card-img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.view-project-arrow{
+  transition: transform 0.3s;
+}
+
+/* arrow rotates when hovered over */
+.view-project-icon-hover .view-project-arrow{
+  transform: rotate(-45deg);
+}
+
+.view-project-icon-click .view-project-arrow{
+  /* move top right */
+  transform: translate(5px, -5px) rotate(-45deg);
+  transition: transform 0.3s;
+}
+
+.card-img-top {
+  object-fit: cover;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px;
+}
+
+
+.project-card-img-container {
+  max-height: 10em;
+}
+
+.project-card-img-container img {
+  height: 100%;
+  object-fit: contain;
+}
+
+/* media query for tablet*/
+@media (max-width: 991.98px) {
+  .profile-pic-outline {
+    position: relative;
+    max-width: 35em;
+    /* width: 100%; */
+    height: 25em;
+  }
+}
+
+/* media query for mobile */
+@media (max-width: 575.98px) {
+  .profile-pic-outline {
+    max-width: 25em;
+    /* width: 100%; */
+    height: 20em;
+    transform: rotate(0deg);
+  }
+}
